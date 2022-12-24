@@ -9,3 +9,12 @@ td {
     text-align: center;
     empty-cells: show;
 }
+
+.container {
+    background: lightgray;
+    margin: auto;
+}
+
+.center {
+    text-align: center
+}

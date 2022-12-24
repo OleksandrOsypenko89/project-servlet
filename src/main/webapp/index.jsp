@@ -11,29 +11,52 @@
     <script src="<c:url value="/static/jquery-3.6.0.min.js"/>"></script>
 </head>
 
-<body>
-<h1>Tic-Tac-Toe</h1>
-<table>
-    <tr>
-        <td onclick="window.location='/logic?click=0'">${data.get(0).getSign()}</td>
-        <td onclick="window.location='/logic?click=1'">${data.get(1).getSign()}</td>
-        <td onclick="window.location='/logic?click=2'">${data.get(2).getSign()}</td>
-    </tr>
-    <tr>
-        <td onclick="window.location='/logic?click=3'">${data.get(3).getSign()}</td>
-        <td onclick="window.location='/logic?click=4'">${data.get(4).getSign()}</td>
-        <td onclick="window.location='/logic?click=5'">${data.get(5).getSign()}</td>
-    </tr>
-    <tr>
-        <td onclick="window.location='/logic?click=6'">${data.get(6).getSign()}</td>
-        <td onclick="window.location='/logic?click=7'">${data.get(7).getSign()}</td>
-        <td onclick="window.location='/logic?click=8'">${data.get(8).getSign()}</td>
-    </tr>
-</table>
+<body class="center">
+<div>
+    <h1>Tic-Tac-Toe</h1>
+</div>
 
-<hr>
 <c:set var="CROSSES" value="<%=Sign.CROSS%>"/>
 <c:set var="NOUGHTS" value="<%=Sign.NOUGHT%>"/>
+
+<table class="container">
+    <c:if test="${winner != CROSSES && winner != NOUGHTS}">
+        <tr>
+            <td onclick="window.location='/logic?click=0'">${data.get(0).getSign()}</td>
+            <td onclick="window.location='/logic?click=1'">${data.get(1).getSign()}</td>
+            <td onclick="window.location='/logic?click=2'">${data.get(2).getSign()}</td>
+        </tr>
+        <tr>
+            <td onclick="window.location='/logic?click=3'">${data.get(3).getSign()}</td>
+            <td onclick="window.location='/logic?click=4'">${data.get(4).getSign()}</td>
+            <td onclick="window.location='/logic?click=5'">${data.get(5).getSign()}</td>
+        </tr>
+        <tr>
+            <td onclick="window.location='/logic?click=6'">${data.get(6).getSign()}</td>
+            <td onclick="window.location='/logic?click=7'">${data.get(7).getSign()}</td>
+            <td onclick="window.location='/logic?click=8'">${data.get(8).getSign()}</td>
+        </tr>
+    </c:if>
+
+    <c:if test="${winner == CROSSES || winner == NOUGHTS}">
+        <tr>
+            <td>${data.get(0).getSign()}</td>
+            <td>${data.get(1).getSign()}</td>
+            <td>${data.get(2).getSign()}</td>
+        </tr>
+        <tr>
+            <td>${data.get(3).getSign()}</td>
+            <td>${data.get(4).getSign()}</td>
+            <td>${data.get(5).getSign()}</td>
+        </tr>
+        <tr>
+            <td>${data.get(6).getSign()}</td>
+            <td>${data.get(7).getSign()}</td>
+            <td>${data.get(8).getSign()}</td>
+        </tr>
+    </c:if>
+
+</table>
 
 <%--@elvariable id="winner" type="java"--%>
 <%--@elvariable id="draw" type="java"--%>
@@ -46,7 +69,7 @@
     <button onclick="restart()">Start again</button>
 </c:if>
 <c:if test="${draw}">
-    <h1>IT'S A DRAW</h1>
+    <h3>IT'S A DRAW</h3>
     <br>
     <button onclick="restart()">Start again</button>
 </c:if>
@@ -64,6 +87,5 @@
         });
     }
 </script>
-
 </body>
 </html>
